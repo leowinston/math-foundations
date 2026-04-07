@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx, amsmath, amsthm, amssymb, mathrsfs}
+
+\title{Winston - Notes on Ergodic Theory and Information}
+\author{Leo Winston}
+\date{April 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Ergodic Theory: The Big Picture}
+Ergodic theory models systems where probability laws remain constant over time. We define a \textbf{state space} $\rho$ (e.g., $\{1, \dots, 6\}$ for a die) and consider a \textbf{doubly infinite sequence} of experiments:
+\[ \omega = (\dots, \omega_{-1}, \omega_0, \omega_1, \dots) \text{ where } \omega_i \in \rho \]
+The sample space $\Omega$ is the set of all such sequences.
+
+\section{Measurable Spaces and $\sigma$-fields}
+A \textbf{measurable space} is a pair $(\Omega, \mathscr{F})$ where $\Omega$ is the sample space and $\mathscr{F}$ is a $\sigma$-field.
+A $\sigma$-field $\mathscr{F}$ is a collection of subsets of $\Omega$ satisfying:
+\begin{enumerate}
+    \item $\emptyset \in \mathscr{F}$ and $\Omega \in \mathscr{F}$
+    \item \textbf{Closure under complement:} If $A \in \mathscr{F}$, then $A^c \in \mathscr{F}$
+    \item \textbf{Closure under countable union:} If $A_i \in \mathscr{F}$ for $i=1, 2, \dots$, then $\bigcup_{i=1}^\infty A_i \in \mathscr{F}$
+\end{enumerate}
+
+\subsection{Proof: Closure under Countable Intersection}
+Since $\mathscr{F}$ is closed under complements and countable unions, by De Morgan's Law:
+\[ \bigcap_{i=1}^\infty A_i = \left( \bigcup_{i=1}^\infty A_i^c \right)^c \]
+Since $A_i^c \in \mathscr{F}$ and their union is in $\mathscr{F}$, the intersection must also be in $\mathscr{F}$.
+
+\section{Measures and Probability Spaces}
+A \textbf{measure} is a function $\mu: \mathscr{F} \to [0, \infty]$ such that:
+\begin{enumerate}
+    \item $\mu(\emptyset) = 0$
+    \item \textbf{$\sigma$-additivity:} For a sequence of disjoint sets $\{A_i\}$, $\mu(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty \mu(A_i)$
+\end{enumerate}
+
+\textbf{Definitions:}
+\begin{itemize}
+    \item If $\mu(\Omega) = 1$, $(\Omega, \mathscr{F}, \mu)$ is a \textbf{Probability Space}.
+    \item If $\mu(\Omega) < \infty$, $\mu$ is a \textbf{Finite Measure}.
+    \item If $\Omega = \bigcup A_i$ such that $\mu(A_i) < \infty$, $\mu$ is \textbf{$\sigma$-finite}.
+\end{itemize}
+
+\section{Approximating Measures: Semirings and Rings}
+To define measures on complex sets (like the Borel sets on $\mathbb{R}$), we start with simpler collections.
+
+\subsection{Semiring}
+A collection $\mathcal{S}$ is a \textbf{semiring} if:
+\begin{enumerate}
+    \item $\emptyset \in \mathcal{S}$
+    \item $A, B \in \mathcal{S} \implies A \cap B \in \mathcal{S}$ (Closed under intersection)
+    \item $A, B \in \mathcal{S} \implies B \setminus A = \bigcup_{i=1}^n C_i$ for disjoint $C_i \in \mathcal{S}$
+\end{enumerate}
+\textit{Example:} The collection of all half-open intervals $(a, b]$ in $\mathbb{R}$ forms a semiring.
+
+\subsection{Ring}
+A collection $\mathcal{R}$ is a \textbf{ring} if it is a semiring and is also closed under \textbf{finite unions}:
+\[ A, B \in \mathcal{R} \implies A \cup B \in \mathcal{R} \]
+
+\end{document}
