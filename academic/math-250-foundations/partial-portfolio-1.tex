@@ -1,0 +1,133 @@
+% 2106 Proof Template
+% Last revised Spring 2019
+
+\documentclass[12pt]{amsart}
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{dsfont, bbm, marvosym}
+\pagestyle{empty}
+
+% ***** PREAMBLE *****
+% Do not modify anything in this part.  In particular, DO NOT modify the margins.
+
+% These pre-defined commands give you easy access to "blackboard bold" letters.  Feel free to add more!
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+\renewcommand{\qedsymbol}{\rule{0.6em}{0.6em}}
+
+% This command defines the "solution" environment that you'll use for your proofs.  Please do NOT modify this.
+\newenvironment{solution}[2]{\noindent \textbf{{#1}}. {#2} \\  \begin{proof}}{\end{proof}}
+
+% ***** IDENTIFYING INFORMATION *****
+
+\title{Proof Portfolio- Math 250- Spring 2026}
+
+\author{Leo Winston}
+
+\date{February 27, 2026}
+
+% ***** MAIN DOCUMENT ***** 
+
+\begin{document}
+
+\maketitle
+\section{Direct Proof}
+{(Exam 1 Review $\#2.i$) }
+\textbf{Theorem:}{ For every integer $a$, the numbers $a$ and $(a+1)(a-1)$ have opposite parity.}
+\begin{proof}
+Suppose $a \in \mathbb{Z}$. We will show that $a$ has opposite parity to the quantity $(a+1)(a-1)$. First, suppose $a$ is even. By definition of even integers, $a = 2k$ for some $k \in \mathbb{Z}$. Then, we want to show that the quantity $(a+1)(a-1)$ is odd:
+\begin{align*}
+(a+1)(a-1) &= ((2k)+1)((2k)-1) \\ 
+&= (2k+1)(2k-1) \\ 
+&= 4k^2-2k+2k-1 \\ 
+&= 4k^2-1 \\ 
+\intertext{To write this result as an odd integer, we rewrite the constant $-1$ as $-2+1$, allowing us to factor out a $2$ from the leading terms:} 
+&= 4k^2-2+1 \\ 
+&= 2(2k^2-1)+1
+\end{align*}
+Because $k$ is an integer, $2k^2 - 1$ is also an integer, as the integers are closed under multiplication and subtraction. Thus, in the case that $a$ is even, $(a+1)(a-1)$ must be odd by the definition of an odd integer.
+
+Now, suppose that $a$ is an odd integer. Then, by definition, there exists $t \in \mathbb{Z}$ such that $a=2t+1$:
+\begin{align*}
+(a+1)(a-1) &= ((2t+1)+1)((2t+1)-1) \\ 
+\intertext{By simplifying the constants before multiplying, we can reveal a common factor of $2$:} 
+&= (2t+2)(2t) \\ 
+&= 4t^2 + 4t \\ 
+&= 2(2t^2+2t)
+\end{align*}
+Since $t \in \mathbb{Z}$, $2t^2+2t$ must also be an integer, as the integers are closed under multiplication and addition. Then, $(a+1)(a-1)$ must be an even integer since it is divisible by two. Thus, in the case that $a$ is odd, $(a+1)(a-1)$ is even. So, in all cases, $a$ and $(a+1)(a-1)$ have opposite parity.
+\end{proof}
+\newpage
+\section{Proof by Contrapositive}
+{(Exam 1 Review $\#2.j$)) }
+\textbf{Theorem:}{ Suppose $x \in \R$. If $x^2$ is irrational, then $x$ is irrational.}
+\begin{proof}
+    Let $x \in \R$. For this proof, we will show the contrapositive, that is, if $x$ is rational, then $x^2$ is rational. Assume $x \in \mathbb{Q}$. Then, by definition of a rational number, $\exists p,q \in \mathbb{Z}$ such that $x = \frac{p}{q}$, where $q \ne 0$:
+    \begin{align*}
+    x&=\frac{p}{q}
+    \end{align*}
+    Squaring both sides and distributing yields:
+    \begin{align*}
+    x^2&=(\frac{p}{q})^2 \\
+    x^2&=\frac{p^2}{q^2} 
+    \end{align*}
+    Because $p,q \in \Z$ and the integers are closed under multiplication, $p^2$ and $q^2$ must also both be integers. Furthermore, $q \ne 0$ implies $q^2 =q \cdot q \ne 0$, since the product of nonzero integers yields a nonzero integer. By definition of a rational number, $x^2 \in \Q$. Therefore, we have proven the contrapositive, and it follows that if $x^2$ is irrational, $x$ must also be irrational.
+\end{proof}
+\newpage
+
+\section{Proof by Contradiction}
+{(Homework $3$ - Problem $\#6$) }
+\textbf{Theorem:}{ For all positive real numbers $x$, the sum of $x$ and its reciprocal is greater than or equal to $2$}
+% Use the solution environment for each of your proofs as follows:
+\begin{proof}
+     Let $x \in \R^+$ Suppose for the sake of contradiction that the sum of $x$ and its reciprocal is strictly less than $2$. Since the positive real numbers do not include zero, the reciprocal of $x$ is well-defined. \\
+       Since $x$ is strictly positive, we may multiply both sides of the inequality by $x$ without reversing the inequality sign or encountering zero-division:
+     \begin{align*}
+     x+\frac{1}{x} &<2\\
+     x^2 + 1 &< 2x 
+     \end{align*}
+     By subtracting $2x$ from both sides, we can then factor the left-hand side of the inequality to obtain:
+     \begin{align*}
+     x^2 -2x+1 &< 0 \\
+     (x-1)(x-1) &< 0 \\
+     (x-1)^2 &< 0
+     \end{align*}
+     Under the domain of the real numbers, squaring any number yields a non-negative real number. Since $x \in \R,$ and $x-1$ is a real number, it follows that $(x-1)^2 \ge 0$. Thus we've reached a contradiction, since for our inequality to hold $(x-1)^2 < 0$. Consequently, our initial assumption that there exists a positive real $x$ where $x +\frac{1}{x} < 2$ must be false. Therefore, the sum of a positive real number and its reciprocal must be greater than or equal to 2.
+\end{proof}
+\newpage
+
+
+\section{If and only If (Equivalence) Proof}
+{(Exam 1 Review $\#2.l$) }
+\textbf{Theorem:}{ For $n \in \mathbb{N}$, $n, n+2$ and $n+4$ are all prime if and only if $n=3$.}
+% Use the solution environment for each of your proofs as follows:
+\begin{proof}
+Let $n \in \N$. We want to show that $n,n+2,n+4$ are all prime if and only if $n = 3$. We will begin by proving the backward implication. Suppose $n = 3$. By the definition of a prime number, a natural number $p > 1$ is prime if its only divisors are $1$ and $p$. The only factors of $n = 3$ are $3$ and $1$, the only factors of $n+2 = 5$ are $5$ and $1$, and the only factors of $n+4 = 7$ are $7$ and $1$. Therefore, $n, n+2,n+4$ are all prime. So, the backward implication holds. \\ Now, suppose $(n\text{ is prime}) \wedge (n+2\text{ is prime}) \wedge (n+4\text{ is prime})$. Since $n \in \N$, it can be represented in terms of its remainder when divided by 3, by the division algorithm. Thus, $\exists k \in \mathbb{Z}$ such that $n = 3k, n =3k+1$, or $n=3k+2$. We will analyze these three cases. \\
+\textbf{Case 1:} Suppose $n = 3k$. Since $n$ is prime, and the only prime divisible by 3 is 3 itself, then $n = 3$. \\
+\textbf{Case 2:} Suppose $n = 3k+1$. Then:
+\begin{align*}
+n &= 3k+1 \\
+n + 2 &= 3k+3 \\
+n + 2 &= 3(k+1)
+\end{align*}
+This shows $n+2$ is a multiple of 3. Since $n+2$ is prime, it must be that $n+2=3$, which implies $n=1$. However, 1 is not prime by definition, contradicting our assumption that $n$ is prime. Thus, this case is impossible.\\
+\textbf{Case 3:} Suppose $n = 3k+2$. Then:
+\begin{align*}
+n &= 3k+2 \\
+n + 4 &= 3k+6 \\
+n + 4 &= 3(k+2)
+\end{align*}
+This shows $n+4$ is a multiple of 3. Since $n+4$ is prime, it must be that $n + 4 =3$. However, this implies $n=-1$, which contradicts $n \in \N$. Thus, this case is also impossible. In all valid cases, $n = 3$, so we've shown the forward implication. Since we've proven both implications, $n, n+2, n+4$ are all prime if and only if $n = 3$.
+\end{proof}
+\newpage
+\section{Set Theoretic Proof}
+{(Homework 3 $\#14$) }
+\textbf{Theorem:}{ Let $A, B$, and $C$ be arbitrary sets. Prove that if $A-C \nsubseteq A-B$, then $B \nsubseteq C$.}
+\begin{proof}
+Let $A, B, C$ be arbitrary sets. For this proof, we will prove the contrapositive, that is, $B \subseteq C$ implies that $A-C \subseteq A-B$. Assume $B \subseteq C$, and suppose $x$ is an arbitrary element of $A - C$. By definition of set difference, $x \in A - C$ implies that $x \in A$ and $x \not \in C$. Since $B \subseteq C$, it follows that $x \not \in C$ implies $x \not \in B$, by definition of subset. Thus, $x \not \in B$.
+By definition of set difference, since $x \in A$ and $x \not \in B$, $x \in A-B$. So, by definition of subset, $A - C \subseteq A - B$. Thus, we've proven the contrapositive. Therefore, if $A - C \not\subseteq A - B$, then $ B \not\subseteq C$.
+\end{proof}
+
+\end{document}

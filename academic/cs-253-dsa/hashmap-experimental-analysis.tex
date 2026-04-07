@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{graphicx, amsmath} % Required for inserting images
+\usepackage{float} % Allows use of [H] float placement
+
+\title{CS 253 - HashMap Experimental Analysis}
+\author{Leo Winston}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Plot}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{avgchain_plot.pdf}
+    \caption{Average chain length vs. number of inserts for maximum load factors 0.50, 1.00, and 2.00. (Graph produced through MATLAB)}
+    \label{fig:avgchain}
+\end{figure}
+
+\subsection{Trends}
+I chose $0.5$, $1.0$, and $2.0$ as the maximum load factors because they are the most 
+distinct of the five, which lets us see larger distinctions in the data. The average 
+chain length of higher load factors consistently exceeds that of lower load factors 
+regardless of the number of insertions, with maxLF $= 2.00$ maintaining an average 
+chain length roughly $1.5\times$ to $2\times$ that of maxLF $= 0.50$ throughout the 
+experiment.
+
+\subsection{Resizing Behavior}
+As entries are inserted, chains grow until the load factor exceeds the maximum, 
+which causes a resize that doubles capacity and rehashes everything, this is the cause for the spikes in the plot. A lower maximum load factor triggers resizing more aggressively, keeping 
+the table sparse (at the cost of more memory). maxLF $= 0.50$ resizes so frequently that its average 
+chain length drops to exactly $1.0$, while maxLF $= 2.00$ tolerates much higher
+density, so each bucket chain contains more entries on average. This is reflected in the data, at $2.0707$ average chain length when the hashmap size is $15{,}000$ inserts.
+
+\subsection{Collision Behavior}
+The maximum load factor controls how full the table gets before resizing, directly 
+determining how many collisions accumulate. Since chain traversal costs $O(k)$ where 
+$k$ is the chain length, a lower load factor keeps $k$ near $1$, keeping 
+lookup performance at $O(1)$, while a higher load factor trades this for less frequent resizes.\\
+
+\textit{Next Page is the full data table for 0.5,1.0 and 2.0 maxLFs}
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|r|r|r|r|r|r|r|r|}
+\hline
+\textbf{maxLF} & \textbf{Inserts} & \textbf{Capacity} & \textbf{Load} & \textbf{Collisions} & \textbf{maxChain} & \textbf{avgChain} & \textbf{Resizes} \\
+\hline
+0.50 & 5000  & 16384  & 0.3052 & 537   & 4 & 1.1203 & 10 \\
+0.50 & 10000 & 32768  & 0.3052 & 740   & 2 & 1.0799 & 11 \\
+0.50 & 15000 & 32768  & 0.4578 & 1652  & 2 & 1.1238 & 11 \\
+0.50 & 20000 & 65536  & 0.3052 & 1278  & 2 & 1.0683 & 12 \\
+0.50 & 25000 & 65536  & 0.3815 & 1982  & 2 & 1.0861 & 12 \\
+0.50 & 30000 & 65536  & 0.4578 & 2822  & 2 & 1.1038 & 12 \\
+0.50 & 35000 & 131072 & 0.2670 & 0     & 1 & 1.0000 & 13 \\
+0.50 & 40000 & 131072 & 0.3052 & 0     & 1 & 1.0000 & 13 \\
+0.50 & 45000 & 131072 & 0.3433 & 0     & 1 & 1.0000 & 13 \\
+0.50 & 50000 & 131072 & 0.3815 & 0     & 1 & 1.0000 & 13 \\
+\hline
+1.00 & 5000  & 8192   & 0.6104 & 1125  & 5 & 1.2903 & 9  \\
+1.00 & 10000 & 16384  & 0.6104 & 1991  & 4 & 1.2486 & 10 \\
+1.00 & 15000 & 16384  & 0.9155 & 4298  & 4 & 1.4016 & 10 \\
+1.00 & 20000 & 32768  & 0.6104 & 2907  & 2 & 1.1701 & 11 \\
+1.00 & 25000 & 32768  & 0.7629 & 4503  & 2 & 1.2197 & 11 \\
+1.00 & 30000 & 32768  & 0.9155 & 6476  & 2 & 1.2753 & 11 \\
+1.00 & 35000 & 65536  & 0.5341 & 3784  & 2 & 1.1212 & 12 \\
+1.00 & 40000 & 65536  & 0.6104 & 4872  & 2 & 1.1387 & 12 \\
+1.00 & 45000 & 65536  & 0.6866 & 6159  & 2 & 1.1586 & 12 \\
+1.00 & 50000 & 65536  & 0.7629 & 7625  & 2 & 1.1799 & 12 \\
+\hline
+2.00 & 5000  & 4096   & 1.2207 & 2036  & 7 & 1.6869 & 8  \\
+2.00 & 10000 & 8192   & 1.2207 & 3919  & 5 & 1.6445 & 9  \\
+2.00 & 15000 & 8192   & 1.8311 & 7756  & 6 & 2.0707 & 9  \\
+2.00 & 20000 & 16384  & 1.2207 & 7245  & 4 & 1.5680 & 10 \\
+2.00 & 25000 & 16384  & 1.5259 & 10766 & 4 & 1.7564 & 10 \\
+2.00 & 30000 & 16384  & 1.8311 & 14784 & 4 & 1.9716 & 10 \\
+2.00 & 35000 & 32768  & 1.0681 & 8767  & 2 & 1.3342 & 11 \\
+2.00 & 40000 & 32768  & 1.2207 & 11378 & 2 & 1.3975 & 11 \\
+2.00 & 45000 & 32768  & 1.3733 & 14432 & 2 & 1.4721 & 11 \\
+2.00 & 50000 & 32768  & 1.5259 & 17843 & 2 & 1.5549 & 11 \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}
