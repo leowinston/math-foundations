@@ -1,6 +1,6 @@
 \documentclass{article}
-\usepackage{graphicx, amsmath} % Required for inserting images
-\usepackage{float} % Allows use of [H] float placement
+\usepackage{graphicx, amsmath}
+\usepackage{float} 
 
 \title{CS 253 - HashMap Experimental Analysis}
 \author{Leo Winston}
@@ -9,6 +9,10 @@
 \begin{document}
 
 \maketitle
+
+\begin{abstract}
+This project details an experimental analysis of a separate-chaining HashMap, investigating how altering the maximum load factor influences collision resolution, table resizing, and lookup efficiency. By simulating up to $50,000$ insertions, we tracked average chain lengths, total collisions, and resize frequencies across three distinct maximum load factor thresholds: $0.50$, $1.00$, and $2.00$. The data demonstrates that lower load factors aggressively trigger capacity doubling to maintain sparser tables and near $\mathcal{O}(1)$ lookup times, whereas higher load factors tolerate greater bucket density, pushing average chain lengths well above $2.0$. Ultimately, this experiment highlights the fundamental trade-off in hash table design between optimizing for lookup efficiency via strict load constraints versus minimizing the computational and memory overhead of frequent rehashing.
+\end{abstract}
 
 \section{Plot}
 \begin{figure}[h]
@@ -35,9 +39,9 @@ density, so each bucket chain contains more entries on average. This is reflecte
 
 \subsection{Collision Behavior}
 The maximum load factor controls how full the table gets before resizing, directly 
-determining how many collisions accumulate. Since chain traversal costs $O(k)$ where 
+determining how many collisions accumulate. Since chain traversal costs $\mathcal{O}(k)$ where 
 $k$ is the chain length, a lower load factor keeps $k$ near $1$, keeping 
-lookup performance at $O(1)$, while a higher load factor trades this for less frequent resizes.\\
+lookup performance at $\mathcal{O}(1)$, while a higher load factor trades this for less frequent resizes.\\
 
 \textit{Next Page is the full data table for 0.5,1.0 and 2.0 maxLFs}
 \begin{table}[h]
