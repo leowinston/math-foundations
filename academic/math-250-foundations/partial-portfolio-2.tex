@@ -22,7 +22,7 @@
 
 % ***** IDENTIFYING INFORMATION *****
 
-\title{Second Partial Portfolio- Math 250- Spring 2026}
+\title{Second Partial Portfolio- Math 250 - Spring 2026}
 
 \author{Leo Winston}
 
@@ -90,6 +90,7 @@ This is precisely the statement $P(k+1)$. Since $P(1)$ holds, and $P(k)$ implies
     \sum_{i=1}^{n} i^3 = \frac{n^2(n+1)^2}{4}. \qedhere
 \]
 \end{proof}
+
 \newpage
 \section{Equivalence Relation Proof}
 \begin{center}(Homework 8 $\#5$)\end{center}
@@ -99,48 +100,55 @@ This is precisely the statement $P(k+1)$. Since $P(1)$ holds, and $P(k)$ implies
 \begin{proof} 
 Let $R$ be the relation on $\mathbb{Z}$ defined by $aRb$ if $4 \mid (a^2-b^2)$. We will prove that $R$ is an equivalence relation by showing it is reflexive, symmetric, and transitive. 
 
-\vspace{0.5cm}
-\noindent \textbf{Reflexive:} Let $a \in \mathbb{Z}.$ Since $a$ is an integer, $a^2$ is also an integer. Because any integer subtracted from itself is zero, we know $a^2 - a^2 = 0$. Note that $0=n(0)$ for any integer $n$. Thus $0 = 4(0)$, and since $0 \in \mathbb{Z}$, it follows by definition of divides that $4 \mid (a^2-a^2)$. Thus, $aRa$ by definition of $R$, so the relation $R$ is reflexive.
+\medskip
+\textbf{Reflexive:} Let $a \in \mathbb{Z}.$ Since $a^2 - a^2 = 0 = 4(0)$, and $0 \in \mathbb{Z}$, it follows by definition of divides that $4 \mid (a^2-a^2)$. Thus, $aRa$ by definition of $R$, so the relation $R$ is reflexive.
 
-\vspace{0.5cm}
-\noindent \textbf{Symmetric:} Let $a,b \in \mathbb{Z}$. Suppose $aRb$. By definition of $R$, $4 \mid (a^2-b^2)$. By definition of divides, $a^2-b^2=4k$ for some integer $k$. Multiplying both sides of the equation by $-1$ yields $b^2-a^2 = 4(-k)$. Since $k$ is an integer, $-k$ is also an integer. Thus, by definition of divides, $4 \mid (b^2 - a^2)$. Therefore, $bRa$ by definition of $R$, proving that $R$ is symmetric.
+\medskip
+\textbf{Symmetric:} Let $a,b \in \mathbb{Z}$. Suppose $aRb$. By definition of $R$, $4 \mid (a^2-b^2)$. By definition of divides, $a^2-b^2=4k$ for some integer $k$. Multiplying both sides of the equation by $-1$ yields $b^2-a^2 = 4(-k)$. Since $k$ is an integer, $-k$ is also an integer. Thus, by definition of divides, $4 \mid (b^2 - a^2)$. Therefore, $bRa$ by definition of $R$, proving that $R$ is symmetric.
 
-\vspace{0.5cm}
-\noindent \textbf{Transitive:} Let $a,b,c \in \mathbb{Z}$. Suppose $aRb$ and $bRc$. By definition of $R$, there exist integers $k$ and $n$ such that $a^2-b^2=4k$ and $b^2-c^2=4n$. Adding these two equations yields:
-$$(a^2-b^2) + (b^2-c^2) = 4k + 4n$$
+\medskip
+\textbf{Transitive:} Let $a,b,c \in \mathbb{Z}$. Suppose $aRb$ and $bRc$. By definition of $R$, there exist integers $k$ and $n$ such that $a^2-b^2=4k$ and $b^2-c^2=4n$. Adding these two equations yields:
+\[
+    (a^2-b^2) + (b^2-c^2) = 4k + 4n
+\]
 By simplifying the left-hand side and factoring the right-hand side, we obtain $a^2 - c^2 = 4(k+n)$. Since $k$ and $n$ are integers, their sum $k+n$ is also an integer due to closure under addition. Thus, by definition of divides, $4 \mid (a^2-c^2)$. Therefore, $aRc$ by definition of $R$, proving that $R$ is transitive.
 
 Because the relation $R$ is reflexive, symmetric, and transitive, it is an equivalence relation on $\mathbb{Z}$.
 \end{proof}
+
 \newpage
 \section{Injectivity and Surjectivity Proof}
 \begin{center}(Exam 3 Review $\#7$)\end{center}
 \textbf{Theorem:} The function $f: \mathbb{R}-\{0\} \rightarrow \mathbb{R}$ defined by $f(x) = \frac{x+1}{x}$ is injective, but not surjective.
 \begin{proof}
-\noindent 
-Let $f: \mathbb{R} - \{0\} \rightarrow \mathbb{R}$ be defined by $f(x)=\frac{x+1}{x}$. If $x$ is an arbitrary element in the domain of $f$, then $x\in \mathbb{R}$ and $x \notin \{0\}$, by definition of set difference. It follows that all elements in the domain of $f$ are real numbers and non-zero.
-\newline
+Let $f: \mathbb{R} - \{0\} \rightarrow \mathbb{R}$ be defined by $f(x)=\frac{x+1}{x}$.
+
+\medskip
 \textbf{Injective:} 
-Let $x_1,x_2$ be in the domain of $f$. Suppose $f(x_1) = f(x_2)$. Since $f(x) = \frac{x+1}{x}$, using the function definition of $f$ on $f(x_1)$ and $f(x_2)$ yields:
-$$\frac{x_1+1}{x_1} = \frac{x_2+1}{x_2}.$$
+Let $x_1,x_2$ be in the domain of $f$. Suppose $f(x_1) = f(x_2)$. By the definition of $f$, this yields:
+\[
+    \frac{x_1+1}{x_1} = \frac{x_2+1}{x_2}.
+\]
 Since $x_1$ and $x_2$ are in the domain of $f$, it follows that they are both non-zero, which implies the product $x_1x_2 \ne 0$. So, we can multiply both sides of the equation by $x_1x_2$ to obtain:
 \begin{align*}
     x_{1}x_{2}\left(\frac{x_1+1}{x_1}\right) &= x_{1}x_{2}\left(\frac{x_2+1}{x_2}\right) \\
-    x_2(x_1+1)&=x_1(x_2+1)\\
-    x_1x_{2}+x_2 &= x_{1}x_2+x_1 \\
-    x_2&=x_1
+    x_2(x_1+1) &= x_1(x_2+1)\\
+    x_1x_2+x_2 &= x_1x_2+x_1 \\
+    x_2 &= x_1
 \end{align*}
 We've shown that $f(x_1)=f(x_2)$ implies $x_1=x_2$. Therefore, by definition of function injectivity, $f$ is injective.
-\newline
-\noindent \textbf{Surjective:} 
-Let $y$ be an element in the codomain of $f$. Consider $y = 1$. 
-By definition of $f$, we have:
+
+\medskip
+\textbf{Surjective:} 
+Consider $y = 1$, which is an element of the codomain $\mathbb{R}$. By definition of $f$, we have:
 \begin{align*}
     f(x) &= \frac{x+1}{x}\\
          &= \frac{x}{x}+\frac{1}{x}\\
          &= 1+\frac{1}{x}.
 \end{align*}
-Since $x \neq 0$, we have $\frac{x}{x} = 1$, and since the quotient of two non-zero numbers is non-zero, $\frac{1}{x} \neq 0$. It follows that $f(x) = 1 + \frac{1}{x} \neq 1$ for any $x \in \mathbb{R}-\{0\}$. Thus $y = 1$ is in the codomain of $f$, but there is no $x$ in the domain where $f(x)=1$. Therefore, by definition of surjectivity, $f$ is not surjective. We've shown that the function $f$ is injective, but not surjective, so the theorem holds.
+Because $x \neq 0$, we have $\frac{x}{x} = 1$, and since the quotient of non-zero numbers is non-zero, $\frac{1}{x} \neq 0$. It follows that $f(x) = 1 + \frac{1}{x} \neq 1$ for any $x \in \mathbb{R}-\{0\}$. Thus $y = 1$ is in the codomain of $f$, but there is no $x$ in the domain where $f(x)=1$. Therefore, by definition of surjectivity, $f$ is not surjective. 
+
+We've shown that the function $f$ is injective, but not surjective, so the theorem holds.
 \end{proof}
 \newpage
 \section{Continuity Proof}
@@ -155,7 +163,7 @@ Because we chose $\delta \le 1$, we know that $|x-2| < \delta \le 1$, and thus $
 \begin{align*}
     -1 < x - 2 &< 1 \\
     -1+4 < (x - 2)+4 &< 1 +4\\
-    3 < x + 2 &< 5 \\
+    3 < x + 2 &< 5
 \end{align*}
 Since $x+2$ is strictly between $3$ and $5$, it is positive, and therefore we can conclude that $|x+2| < 5$.
 
@@ -167,7 +175,7 @@ Now, we must evaluate $|f(x)-f(2)|$. We are given that $f(x)=2x^2+1$, so by the 
     &= 2|x^2-4| \\
     &= 2|x-2||x+2| 
 \end{align*}
-Because we have established that $|x+2| < 5$, and because our choice of $\delta$ guarantees that $|x-2| < \frac{\epsilon}{10}$, we can apply these bounds:
+Because we have established that $|x+2| < 5$, and because $|x-2| < \delta \le \frac{\epsilon}{10}$, we can apply these bounds:
 \begin{align*}
     2|x-2||x+2| &< 2 \left(\frac{\epsilon}{10}\right) (5) \\
     &= 10 \left(\frac{\epsilon}{10}\right) \\
@@ -182,7 +190,7 @@ Thus, $|f(x) - f(2)| < \epsilon$. Therefore, by the definition of continuity, $f
 \noindent\textbf{Theorem:} For all positive real numbers $x$, the sum of $x$ and its reciprocal is greater than or equal to $2$.
 
 \begin{proof}
-Let $x \in \mathbb{R}^+$. Since $x$ is a real number, $(x-1)$ is also a real number, by closure under the real numbers. A fundamental property of the real numbers is that the square of any real number is non-negative. Therefore, we establish that:
+Let $x \in \mathbb{R}^+$. Since $x$ is a real number, $x-1$ is also a real number. A fundamental property of the real numbers is that the square of any real number is non-negative. Therefore, we establish that:
 \[
     (x-1)^2 \ge 0
 \]
