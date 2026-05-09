@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Convex Combinations}
+\author{Leo David Winston}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Theorem}
+Let $C$ be a convex set. If $x_1, \dots, x_n \in C$, then any convex combination $\sum_{i=1}^{n} \theta_i x_i$ is also in $C$, where $\theta_i \ge 0$ and $\sum_{i=1}^{n} \theta_i = 1$.
+
+\section*{Proof}
+
+Let $P(n)$ be the statement that $\sum_{i=1}^{n} \theta_i x_i \in C$.
+
+\textbf{Base Case:} $P(2)$ holds by the definition of convexity. For $x_1, x_2 \in C$ and $\theta_1, \theta_2 \ge 0$ where $\theta_1 + \theta_2 = 1$, we have $x_1 \theta_1 + x_2 \theta_2 \in C$. Note that $\theta_2 = 1 - \theta_1$.
+
+\textbf{Inductive Step:} Suppose $P(k)$ holds for some $k \ge 2$. That is, assume $x_1 \theta_1 + \dots + x_k \theta_k \in C$ whenever $\sum_{i=1}^k \theta_i = 1$. 
+
+By introducing the new point $x_{k+1}$, we assume $\theta_{k+1}$ is a fixed parameter representing the weighting of this new point. We want to show $P(k+1)$: that $x_1 \theta'_1 + \dots + x_k \theta'_k + x_{k+1} \theta'_{k+1} \in C$ for $\sum_{i=1}^{k+1} \theta'_i = 1$.
+
+To keep the relative weighting of the original parameters, we allow $\theta'_i = \theta_i(1-\theta_{k+1})$ for $1 \le i \le k$. Since $\theta_{k+1}$ is fixed, let's define $\theta'_{k+1} = \theta_{k+1}$.
+
+Now, consider the sum of weights $\sum_{i=1}^{k+1} \theta'_i$:
+\begin{align*}
+\theta'_1 + \dots + \theta'_k + \theta'_{k+1} &= \theta_1(1-\theta_{k+1}) + \dots + \theta_k(1-\theta_{k+1}) + \theta_{k+1} \\
+&= (1-\theta_{k+1})\left(\sum_{i=1}^{k}\theta_i\right) + \theta_{k+1} \quad  \\ 
+&= 1-\theta_{k+1} + \theta_{k+1} \textbf{  (By inductive hypothesis)}\\ 
+&= 1 
+\end{align*}
+
+Since $\sum_{i=1}^k \theta_i = 1$, the sum $\sum_{i=1}^k \theta_i x_i$ is a convex combination of $k$ points. By the inductive hypothesis, this forms a point $y \in C$. 
+
+Substituting the new parameters $\theta'_i$ into our total sum gives:
+\[ \sum_{i=1}^{k} \theta'_i x_i + \theta'_{k+1}x_{k+1} = (1-\theta_{k+1})\left(\sum_{i=1}^k \theta_i x_i\right) + \theta_{k+1}x_{k+1} \]
+\[ = (1-\theta_{k+1})y + \theta_{k+1}x_{k+1} \]
+This is a convex combination of two points in $C$ (since their weights sum to $1$), and therefore the resulting point is in $C$.
+
+\textbf{Conclusion:} By the principle of mathematical induction, the statement holds for all $n \in \mathbb{N}$.
+
+\end{document}

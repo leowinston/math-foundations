@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Convex Sets}
+\author{Leo David Winston}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Affine Set}
+Show that the set $\{Ax + b \mid  F x = g\}$ is affine. Here $A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^m, F \in \mathbb{R}^{p \times n}$ and $g \in \mathbb{R}^p$.
+
+\begin{proof}
+Let the set $S = \{Ax + b \mid  F x = g\}$. Suppose $x_1,x_2 \in S$. We will show that the line between $x_1$ and $x_2$ is in the set $S$.
+
+Let $\theta_1 \in \mathbb{R}$ and consider the line $x_1\theta_1 + x_2(1-\theta_1)$, which passes through $x_1$ when $\theta_1 = 1$, and passes through $x_2$ when $\theta_1 = 0$.
+
+By the set definition of $S$, there are vectors $v_1,v_2 \in \mathbb{R}^n$ where $x_1=Av_1+b$, and $x_2 = Av_2+b$:
+\begin{align*}
+\theta_1(Av_1+b) + (1-\theta_1)(Av_2+b) &= \theta_1 Av_1 + (1-\theta_1)Av_2 + \theta_1 b + (1-\theta_1)b \\
+&= A(\theta_1 v_1 + (1-\theta_1)v_2) + (\theta_1 + 1 - \theta_1)b \\
+&= A(\theta_1 v_1 + (1-\theta_1)v_2) + b
+\end{align*}
+Now, we will show that $F(\theta_1v_1 + (1-\theta_1)v_2)=g$:
+\begin{align*}
+F(\theta_1 v_1 + (1-\theta_1)v_2) &= \theta_1 Fv_1 + (1-\theta_1)Fv_2 \\
+&= \theta_1 g + (1-\theta_1)g \\
+&= (\theta_1 + 1 - \theta_1)g \\
+&= g
+\end{align*}
+Since we've shown the line between arbitrary points in $S$ must be contained in $S$, the set $S$ is therefore affine.
+\end{proof}
+\newpage
+\section{Set Distributive Characteristic of Convexity [Rockafellar]}
+Show that $C \subseteq \mathbb{R}^n$ is convex if and
+only if $(\alpha + \beta)C = \alpha C + \beta C$ for all nonnegative $\alpha, \beta$. Here we use standard notation for scalar-set
+multiplication and set addition, i.e., $\alpha C = \{\alpha c \mid c \in C\}$ and $A + B = \{a + b \mid a \in A, b \in B\}$.
+
+\begin{proof}
+($\impliedby$): Let $(\alpha +\beta) C = \alpha C + \beta C$. Suppose $x_1,x_2 \in C$. Then, a point $y$ is on the line segment between the two points if  $y \in \{\theta_1 x_1 + (1-\theta_1)x_2 \mid \theta_1 \in [0,1]\}$. We will show every point $y$ on a line segment that has two arbitrary endpoints in $C$ must be in the set $C$. We have that $\theta_1 \in [0,1]$ which implies $1-\theta_1 \in [0,1]$. By our assumption, we may choose $\alpha = \theta_1$ and $\beta = 1-\theta_1$. Since $y \in \theta_1C + (1-\theta_1)C$, we may conclude that $y \in (\theta_1 + (1-\theta_1))C \implies y \in C$.
+
+($\implies$): Let $C \subseteq \mathbb{R}^n$ be a convex set, and let $\alpha,\beta \in \mathbb{R}^+$. 
+
+($\subseteq$): Suppose $x \in (\alpha + \beta)C$. By definition of scalar-set multiplication, $x=(\alpha+\beta)c$ for some $c \in C$, which implies $x=\alpha c + \beta c$ by linearity of vector-scalar operations. Thus, $x \in \alpha C + \beta C$.
+
+($\supseteq$): Now, suppose $x \in \alpha C + \beta C$. By the definition of set addition and scalar multiplication, $x = \alpha c_1 + \beta c_2$ for some $c_1, c_2 \in C$. 
+
+Assume $\alpha + \beta > 0$ (the case $\alpha + \beta = 0$ is trivial as it implies $\alpha=\beta=0$ and $x=0 \in 0C$). We can rewrite $x$ by factoring out the sum of the scalars:
+\[ x = (\alpha + \beta) \left( \frac{\alpha}{\alpha + \beta} c_1 + \frac{\beta}{\alpha + \beta} c_2 \right) \]
+
+Let $\theta = \frac{\alpha}{\alpha + \beta}$. Since $\alpha, \beta \ge 0$, it follows that $0 \le \theta \le 1$. Furthermore, $1 - \theta = 1 - \frac{\alpha}{\alpha + \beta} = \frac{\beta}{\alpha + \beta}$. We can then write:
+\[ x = (\alpha + \beta) (\theta c_1 + (1 - \theta) c_2) \]
+
+    By the definition of convexity, since $c_1, c_2 \in C$ and $\theta \in [0, 1]$, the convex combination $c_3 = \theta c_1 + (1 - \theta) c_2$ must be an element of $C$. Thus:
+\[ x = (\alpha + \beta) c_3 \text{ for some } c_3 \in C \]
+This implies $x \in (\alpha + \beta)C$.
+
+Therefore, if the set $C \subseteq \mathbb{R}^+$ is convex $\implies (\alpha + \beta)C = \alpha C + \beta C$.
+
+\end{proof}
+
+\end{document}

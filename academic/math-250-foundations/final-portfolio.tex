@@ -22,25 +22,17 @@
 
 % ***** IDENTIFYING INFORMATION *****
 
-\title{Second Partial Portfolio- Math 250- Spring 2026}
+\title{Final Portfolio - Math 250 - Spring 2026}
 
 \author{Leo Winston}
 
-\date{April 22, 2026}
+\date{May 1, 2026}
 
 % ***** MAIN DOCUMENT ***** 
 
 \begin{document}
 
 \maketitle
-\section{Set Theoretic Proof}
-{\begin{center}(Homework 3 $\#14$)\end{center}}
-\textbf{Theorem:}{ Let $A, B$, and $C$ be arbitrary sets. If $A-C \nsubseteq A-B$, then $B \nsubseteq C$.}
-\begin{proof}
-Let $A, B, C$ be arbitrary sets. We will proceed by proving the contrapositive. That is, we will show $B \subseteq C$ implies $A-C \subseteq A-B$. Assume $B \subseteq C$, and let $x$ be an arbitrary element of $A - C$. By definition of set difference, $x \in A - C$ implies $x \in A$ and $x \not \in C$. By definition of a subset, the assumption $B \subseteq C$ means every element of $B$ is also an element of $C$. Consequently, since $x \notin C$, it logically follows $x \notin B$.
-Now we have established that $x \in A$ and $x \notin B$. By definition of set difference, this implies $x \in A - B$. So, by definition of subset, $A - C \subseteq A - B$. Thus, we have proven the contrapositive. Therefore, the original statement holds: if $A - C \not\subseteq A - B$, then $ B \not\subseteq C$.
-\end{proof}
-\newpage
 
 \section{Proof by Induction}
 \begin{center}(Exam 2 Review $\#11$)\end{center}
@@ -104,10 +96,10 @@ Let $R$ be the relation on $\mathbb{Z}$ defined by $aRb$ if $4 \mid (a^2-b^2)$. 
 \textbf{Reflexive:} Let $a \in \mathbb{Z}.$ Since $a^2 - a^2 = 0 = 4(0)$, and $0 \in \mathbb{Z}$, it follows by definition of divides that $4 \mid (a^2-a^2)$. Thus, $aRa$ by definition of $R$, so the relation $R$ is reflexive.
 
 \medskip
-\textbf{Symmetric:} Let $a,b \in \mathbb{Z}$. Suppose $aRb$. By definition of $R$, $4 \mid (a^2-b^2)$. By definition of divides, $a^2-b^2=4k$ for some integer $k$. Multiplying both sides of the equation by $-1$ yields $b^2-a^2 = 4(-k)$. Since $k$ is an integer, $-k$ is also an integer. Thus, by definition of divides, $4 \mid (b^2 - a^2)$. Therefore, $bRa$ by definition of $R$, proving that $R$ is symmetric.
+\textbf{Symmetric:} Let $a,b \in \mathbb{Z}$ such that $aRb$. By definition of $R$, $4 \mid (a^2-b^2)$. By definition of divides, $a^2-b^2=4k$ for some integer $k$. Multiplying both sides of the equation by $-1$ yields $b^2-a^2 = 4(-k)$. Since $k$ is an integer, $-k$ is also an integer. Thus, by definition of divides, $4 \mid (b^2 - a^2)$. Therefore, $bRa$ by definition of $R$, proving that $R$ is symmetric.
 
 \medskip
-\textbf{Transitive:} Let $a,b,c \in \mathbb{Z}$. Suppose $aRb$ and $bRc$. By definition of $R$, there exist integers $k$ and $n$ such that $a^2-b^2=4k$ and $b^2-c^2=4n$. Adding these two equations yields:
+\textbf{Transitive:} Let $a,b,c \in \mathbb{Z}$ such that $aRb$ and $bRc$. By definition of $R$, there exist integers $k$ and $n$ such that $a^2-b^2=4k$ and $b^2-c^2=4n$. Adding these two equations yields:
 \[
     (a^2-b^2) + (b^2-c^2) = 4k + 4n
 \]
@@ -121,7 +113,7 @@ Because the relation $R$ is reflexive, symmetric, and transitive, it is an equiv
 \begin{center}(Exam 3 Review $\#7$)\end{center}
 \textbf{Theorem:} The function $f: \mathbb{R}-\{0\} \rightarrow \mathbb{R}$ defined by $f(x) = \frac{x+1}{x}$ is injective, but not surjective.
 \begin{proof}
-Let $f: \mathbb{R} - \{0\} \rightarrow \mathbb{R}$ be defined by $f(x)=\frac{x+1}{x}$. Let $x\in \mathbb{R}-\{0\}$ be an arbitrary element in the domain of $f$, so by definition of set difference, $x\in \mathbb{R}$ and $x \notin \{0\}$, which implies $x\ne0$.
+Let $f: \mathbb{R} - \{0\} \rightarrow \mathbb{R}$ be defined by $f(x)=\frac{x+1}{x}$. We will show that $f$ is injective, and not surjective.
 \medskip
 \newline
 \textbf{Injective:} 
@@ -136,17 +128,18 @@ Since $x_1$ and $x_2$ are in the domain of $f$, it follows that they are both no
     x_1x_2+x_2 &= x_1x_2+x_1 \\
     x_2 &= x_1
 \end{align*}
-We've shown that $f(x_1)=f(x_2)$ implies $x_1=x_2$. Therefore, by definition of function injectivity, $f$ is injective.
+We've shown that $f(x_1)=f(x_2)$ implies $x_1=x_2$. Therefore, by definition of function injectivity, $f$ is injective. 
 
 \medskip
+
 \textbf{Surjective:} 
-Consider $y = 1$, which is an element of the codomain $\mathbb{R}$. By definition of $f$, we have:
+Consider $y = 1$, which is an element of the codomain $\mathbb{R}$. Assume, for the sake of contradiction, that $1=f(x)$ for some $x \in \mathbb{R} - \{0\}$. By definition of $f$, we have:
 \begin{align*}
-    f(x) &= \frac{x+1}{x}\\
-         &= \frac{x}{x}+\frac{1}{x}\\
-         &= 1+\frac{1}{x}.
+    1 &= \frac{x+1}{x}\\
+    x &= x+1 \\
+    0 &= 1
 \end{align*}
-Because $x \neq 0$, we have $\frac{x}{x} = 1$, and since the quotient of non-zero numbers is non-zero, $\frac{1}{x} \neq 0$. It follows that $f(x) = 1 + \frac{1}{x} \neq 1$ for any $x \in \mathbb{R}-\{0\}$. Thus $y = 1$ is in the codomain of $f$, but there is no $x$ in the domain where $f(x)=1$. Therefore, by definition of surjectivity, $f$ is not surjective. 
+Because $x \neq 0$, we may multiply both sides of the equation by $x$. Subtracting both sides of the equation by $x$ yields $0 \ne 1$. This is a contradiction. Thus our original assumption, that there exists an $x \in \mathbb{R} - \{0\}$ such that $y=1=f(x)$, is false. Therefore, $f$ is not surjective, by definition of function surjectivity.
 
 We've shown that the function $f$ is injective, but not surjective, so the theorem holds.
 \end{proof}
@@ -157,17 +150,8 @@ We've shown that the function $f$ is injective, but not surjective, so the theor
 \textbf{Theorem:} The function $f: \mathbb{R} \rightarrow \mathbb{R}$ defined by $f(x) = 2x^2+1$ is continuous at $x=2$.
 
 \begin{proof}
-Let $\epsilon > 0$. We choose $\delta = \min\left(1, \frac{\epsilon}{10}\right)$. Suppose $x \in \mathbb{R}$ such that $|x-2| < \delta$. We will show that $|f(x) - f(2)| < \epsilon$.
-
-Because we chose $\delta \le 1$, we know that $|x-2| < \delta \le 1$, and thus $|x-2|$ must be strictly less than $1$. This implies:
-\begin{align*}
-    -1 < x - 2 &< 1 \\
-    -1+4 < (x - 2)+4 &< 1 +4\\
-    3 < x + 2 &< 5
-\end{align*}
-Since $x+2$ is strictly between $3$ and $5$, it is positive, and therefore we can conclude that $|x+2| < 5$.
-
-Now, we must evaluate $|f(x)-f(2)|$. We are given that $f(x)=2x^2+1$, so by the function definition, and factoring, we obtain:
+Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be defined by $f(x)=2x^2+1$. We will show $f$ is continuous at the point $x=2$. Let $\epsilon > 0$. We choose $\delta = \min\{1, \frac{\epsilon}{10}\}$. By definition of the minimum element of a set, it follows that $\delta \le 1$ and $\delta \le \frac{\epsilon}{10}$. Suppose $x \in \mathbb{R}$ such that $|x-2| < \delta$. 
+Now, evaluate $|f(x)-f(2)|$. Using the function definition of $f$, and factoring the difference of squares yields:
 \begin{align*}
     |f(x) - f(2)| &= |(2x^2+1) - (2(2)^2+1)| \\
     &= |2x^2+1-9| \\
@@ -175,13 +159,20 @@ Now, we must evaluate $|f(x)-f(2)|$. We are given that $f(x)=2x^2+1$, so by the 
     &= 2|x^2-4| \\
     &= 2|x-2||x+2| 
 \end{align*}
-Because we have established that $|x+2| < 5$, and because $|x-2| < \delta \le \frac{\epsilon}{10}$, we can apply these bounds:
+We chose $\delta$ such that $|x-2| < \delta \le 1$. Consequently, $|x-2|$ must be strictly less than $1$. This implies:
 \begin{align*}
-    2|x-2||x+2| &< 2 \left(\frac{\epsilon}{10}\right) (5) \\
-    &= 10 \left(\frac{\epsilon}{10}\right) \\
+    -1 < x - 2 &< 1\\
+    -1+4 < (x - 2)+4 &< 1 + 4\\
+     3 < x + 2 &< 5
+\end{align*}
+Since $-5 < 3$, we see that $-5<x+2<5$. It logically follows that $|x+2|$ is strictly less than 5. Since $|x+2| < 5$, and $|x-2| < \delta \le \frac{\epsilon}{10}$, we have:
+\begin{align*}
+|f(x) - f(2)| &= 2|x-2||x+2|\\
+    &< 2 (\delta) (5) \\
+    &\le 10 \left(\frac{\epsilon}{10}\right) \\
     &= \epsilon
 \end{align*}
-Thus, $|f(x) - f(2)| < \epsilon$. Therefore, by the definition of continuity, $f(x)$ is continuous at $x=2$.
+Thus, $|f(x) - f(2)| < \epsilon$. Therefore, by the definition of continuity, $f$ is continuous at $x=2$.
 \end{proof}
 
 \newpage
@@ -202,13 +193,24 @@ By adding $2x$ to both sides of the inequality, we obtain:
 \[
     x^2 + 1 \ge 2x
 \]
-Because $x \in \mathbb{R}^+$, we know that $x$ is strictly positive. Therefore, we can divide both sides of the inequality by $x$ without encountering zero-division or reversing the direction of the inequality sign. Doing so results in:
+Because $x \in \mathbb{R}^+$, $x$ is strictly positive. Therefore, we can divide both sides of the inequality by $x$ without encountering zero-division or reversing the direction of the inequality sign. Doing so results in:
 \begin{align*}
     \frac{x^2 + 1}{x} &\ge \frac{2x}{x} \\
     \frac{x^2}{x} + \frac{1}{x} &\ge 2 \\
     x + \frac{1}{x} &\ge 2
 \end{align*}
 Thus, for any positive real number $x$, the sum of $x$ and its reciprocal is greater than or equal to $2$.
+\end{proof}
+
+
+\newpage
+
+\section{Set Theoretic Proof}
+{\begin{center}(Homework 3 $\#14$)\end{center}}
+\textbf{Theorem:}{ Let $A, B$, and $C$ be arbitrary sets. If $A-C \nsubseteq A-B$, then $B \nsubseteq C$.}
+\begin{proof}
+Let $A, B, C$ be arbitrary sets. We will proceed by proving the contrapositive. That is, we will show $B \subseteq C$ implies $A-C \subseteq A-B$. Assume $B \subseteq C$, and let $x$ be an arbitrary element of $A - C$. By definition of set difference, $x \in A - C$ implies $x \in A$ and $x \not \in C$. By definition of a subset, the assumption $B \subseteq C$ means every element of $B$ is also an element of $C$. Consequently, since $x \notin C$, it logically follows $x \notin B$.
+Now we have established that $x \in A$ and $x \notin B$. By definition of set difference, this implies $x \in A - B$. So, by definition of subset, $A - C \subseteq A - B$. Thus, we have proven the contrapositive. Therefore, the original statement holds: if $A - C \not\subseteq A - B$, then $ B \not\subseteq C$.
 \end{proof}
 
 \end{document}
